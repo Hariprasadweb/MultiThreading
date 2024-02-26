@@ -1,9 +1,6 @@
 package oops;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
@@ -13,14 +10,16 @@ public class FrequencyOfString {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
        // findFrequency("hyderabad");
         //validateEmploye();
-      CompletableFuture<Void> data=  validateEmp();
+     // CompletableFuture<Void> data=  validateEmp();
       //data.get();
-      CompletableFuture<List<Employe>> list= validateEmployess();
+     // CompletableFuture<List<Employe>> list= validateEmployess();
     /* List<Employe> lsemp= list.join();
      lsemp.stream().forEach(System.out::println);*/
 
-    CompletableFuture<Void> cp= CompletableFuture.allOf(data,list);
-    cp.join();
+  //  CompletableFuture<Void> cp= CompletableFuture.allOf(data,list);
+   // cp.join();
+        String word=" hyderabad is biggest city in the india";
+        findLengthForWord(word);
 
     }
 
@@ -101,5 +100,11 @@ public class FrequencyOfString {
         });
         return emp;
 
+    }
+
+    public static void findLengthForWord(String str){
+
+     String s=  Arrays.stream(str.split(" ")).sorted(Comparator.comparing(String::length).reversed()).skip(1).findFirst().get();
+      System.out.println(s);
     }
 }
